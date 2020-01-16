@@ -1,0 +1,105 @@
+﻿@model WebApp.Models.OrderAndProducts
+
+@{
+    ViewData["Title"] = "ListOfResult";
+}
+
+<h2>Orders IN-PROGRESS</h2>
+@{
+    var orders = Model.Orders;
+    var products = Model.OrderedProducts;
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Orders.FirstOrDefault().MerchantOrderNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Orders.FirstOrDefault().ChannelName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Orders.FirstOrDefault().ChannelId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Orders.FirstOrDefault().ChannelOrderNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Orders.FirstOrDefault().Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Orders.FirstOrDefault().TotalInclVat)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in orders)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MerchantOrderNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChannelName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChannelId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChannelOrderNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalInclVat)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Top 5 product sold form this order</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderedProducts.FirstOrDefault().MerchantProductNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderedProducts.FirstOrDefault().TotalQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderedProducts.FirstOrDefault().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderedProducts.FirstOrDefault().Ean)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in products)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MerchantProductNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalQuantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ean)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Product", new { merchantProductNo = item.MerchantProductNo })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
