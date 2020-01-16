@@ -20,3 +20,19 @@ ClientApiChannelEngine/obj/
 packages/
 
 .vs/
+
+ChannelEngine.ClientApi/bin/
+
+ChannelEngine.ClientApi/obj/
+
+ChannelEngine.ClientApi.Test/bin/
+
+ChannelEngine.ClientApi.Test/obj/
+
+ChannelEngine.ConsoleApp/bin/
+
+ChannelEngine.ConsoleApp/obj/
+
+ChannelEngine.WebApp/bin/
+
+ChannelEngine.WebApp/obj/
