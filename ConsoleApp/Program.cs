@@ -1,8 +1,8 @@
-﻿using ClientApiChannelEngine;
+﻿using ChannelEngine.ClientApi;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace ConsoleApp
+namespace ChannelEngine.ConsoleApp
 {
     class Program
     {

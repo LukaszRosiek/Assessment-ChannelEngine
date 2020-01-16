@@ -1,4 +1,5 @@
-﻿using ClientApiChannelEngine.Models;
+﻿using ChannelEngine.ClientApi.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -6,28 +7,17 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace ClientApiChannelEngine
+namespace ChannelEngine.ClientApi
 {
-    public class ProductClient : IProductClient
+    public class ProductClient : ApiClientBase, IProductClient
     {
-        private readonly HttpClient client;
-        private readonly string baseUri;
-        private readonly string additionalApiKey;
-
-        public ProductClient(IClientConfig clientConfig)
+        public ProductClient(IClientConfig clientConfig) : base(clientConfig)
         {
-            this.baseUri = $"{clientConfig.GetBaseApiUrl()}/api/v2";
-            this.additionalApiKey = clientConfig.GetApiKey();
-            this.client = new HttpClient();
-            this.client.DefaultRequestHeaders.Accept.Clear();
-            this.client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-
         }
 
         public async Task<HttpStatusCode> CreateProductAsync(Product product)
         {
-            var uri = API.Product.UpsertProducts(baseUri, additionalApiKey);
+            var uri = urlResolver.ProductUrl.UpsertProducts();
             HttpResponseMessage response = await client.PostAsJsonAsync(uri, new[] { product });
             response.EnsureSuccessStatusCode();
 
@@ -36,31 +26,31 @@ namespace ClientApiChannelEngine
 
         public async Task<Product> GetProductAsync(string merchantProductNo)
         {
-            Product product = null;
-            var uri = API.Product.GetProduct(baseUri,merchantProductNo, additionalApiKey);
+            var uri = urlResolver.ProductUrl.GetProduct(merchantProductNo);
             HttpResponseMessage response = await client.GetAsync(uri);
-            if (response.IsSuccessStatusCode)
+            if (!response.IsSuccessStatusCode)
             {
-                product = await response.Content.ReadAsAsync<Product>();
+                throw new Exception("Failed to load Product data.");
             }
-            return product.Content;
+
+            return (await response.Content.ReadAsAsync<Product>());
         }
 
         public async Task<IEnumerable<Product>> GetProductsAsync()
         {
-            Products products = null;
-            var uri = API.Product.GetProducts(baseUri, additionalApiKey);
+            var uri = urlResolver.ProductUrl.GetProducts();
             HttpResponseMessage response = await client.GetAsync(uri);
-            if (response.IsSuccessStatusCode)
+            if (!response.IsSuccessStatusCode)
             {
-                products = await response.Content.ReadAsAsync<Products>();
+                throw new Exception("Failed to load Products data.");
             }
-            return products.Content;
+
+            return (await response.Content.ReadAsAsync<Products>()).Content;
         }
 
         public async Task<HttpStatusCode> UpdateProductAsync(Product product)
         {
-            var uri = API.Product.UpsertProducts(baseUri, additionalApiKey);
+            var uri = urlResolver.ProductUrl.UpsertProducts();
             HttpResponseMessage response = await client.PostAsJsonAsync(uri, new[] { product });
             response.EnsureSuccessStatusCode();
 
@@ -69,7 +59,7 @@ namespace ClientApiChannelEngine
 
         public async Task<HttpStatusCode> DeleteProductAsync(string merchantProductNo)
         {
-            var uri = API.Product.DeleteProduct(baseUri, merchantProductNo, additionalApiKey);
+            var uri = urlResolver.ProductUrl.DeleteProduct(merchantProductNo);
             HttpResponseMessage response = await client.DeleteAsync(uri);
 
             return response.StatusCode;
@@ -113,6 +103,7 @@ namespace ClientApiChannelEngine
                     Ean = productDetails.Ean
                 });
             }
+
             return listOfUpdated;
         }
     }

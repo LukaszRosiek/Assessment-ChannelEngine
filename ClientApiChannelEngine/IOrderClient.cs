@@ -1,8 +1,8 @@
-﻿using ClientApiChannelEngine.Models;
+﻿using ChannelEngine.ClientApi.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ClientApiChannelEngine
+namespace ChannelEngine.ClientApi
 {
     public interface IOrderClient
     {

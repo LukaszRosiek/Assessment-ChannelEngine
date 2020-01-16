@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClientApiChannelEngine.Helpers
+namespace ChannelEngine.ClientApi.Helpers
 {
     public static class OrderStatus
     {

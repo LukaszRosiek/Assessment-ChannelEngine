@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClientApiChannelEngine
+namespace ChannelEngine.ClientApi
 {
     public interface IClientConfig
     {

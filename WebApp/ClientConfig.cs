@@ -1,11 +1,11 @@
-﻿using ClientApiChannelEngine;
+﻿using ChannelEngine.ClientApi;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApp
+namespace ChannelEngine.WebApp
 {
     public class ClientConfig : IClientConfig
     {

@@ -1,9 +1,9 @@
-﻿using ClientApiChannelEngine.Models;
+﻿using ChannelEngine.ClientApi.Models;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace ClientApiChannelEngine
+namespace ChannelEngine.ClientApi
 {
     public interface IProductClient
     {

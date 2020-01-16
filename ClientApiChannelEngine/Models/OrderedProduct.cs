@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClientApiChannelEngine.Models
+namespace ChannelEngine.ClientApi.Models
 {
     public class OrderedProduct
     {

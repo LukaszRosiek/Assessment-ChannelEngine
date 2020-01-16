@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using ClientApiChannelEngine;
-using ClientApiChannelEngine.Helpers;
-using ClientApiChannelEngine.Models;
+using ChannelEngine.ClientApi;
+using ChannelEngine.ClientApi.Helpers;
+using ChannelEngine.ClientApi.Models;
 using Microsoft.AspNetCore.Mvc;
-using WebApp.Models;
-using WebApp.Models.Order;
+using ChannelEngine.WebApp.Models;
+using ChannelEngine.WebApp.Models.Order;
 
-namespace WebApp.Controllers
+namespace ChannelEngine.WebApp.Controllers
 {
     public class OrderController : Controller
     {

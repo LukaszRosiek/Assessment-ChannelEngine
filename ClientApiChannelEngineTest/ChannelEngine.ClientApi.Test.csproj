@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ClientApiChannelEngine\ClientApiChannelEngine.csproj" />
+    <ProjectReference Include="..\ClientApiChannelEngine\ChannelEngine.ClientApi.csproj" />
   </ItemGroup>
 
 </Project>

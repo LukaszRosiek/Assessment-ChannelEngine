@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientApiChannelEngine", "ClientApiChannelEngine\ClientApiChannelEngine.csproj", "{47140444-4D54-4AF5-B8F3-81312F2150A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChannelEngine.ClientApi", "ClientApiChannelEngine\ChannelEngine.ClientApi.csproj", "{47140444-4D54-4AF5-B8F3-81312F2150A4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientApiChannelEngineTest", "ClientApiChannelEngineTest\ClientApiChannelEngineTest.csproj", "{B5817840-8119-428B-BE54-07C74F1EED18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChannelEngine.ClientApi.Test", "ClientApiChannelEngineTest\ChannelEngine.ClientApi.Test.csproj", "{B5817840-8119-428B-BE54-07C74F1EED18}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{69F11143-BD18-48D3-B179-4A60B7D2485A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChannelEngine.ConsoleApp", "ConsoleApp\ChannelEngine.ConsoleApp.csproj", "{69F11143-BD18-48D3-B179-4A60B7D2485A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "WebApp\WebApp.csproj", "{5FFB09DB-8C8F-403E-A693-99DB2FD24B12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChannelEngine.WebApp", "WebApp\ChannelEngine.WebApp.csproj", "{5FFB09DB-8C8F-403E-A693-99DB2FD24B12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

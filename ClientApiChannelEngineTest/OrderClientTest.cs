@@ -1,12 +1,10 @@
-﻿using ClientApiChannelEngine;
+﻿using ChannelEngine.ClientApi.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace ClientApiChannelEngineTest
+namespace ChannelEngine.ClientApi.Test
 {
     [TestClass]
     public class OrderClientTest
@@ -24,7 +22,7 @@ namespace ClientApiChannelEngineTest
         public async Task GetOrdersAsyncTest()
         {
             PrepareForTest();
-            var orders = await orderClient.GetOrdersAsync();
+            IEnumerable<Order> orders = await orderClient.GetOrdersAsync();
 
             Assert.IsTrue(orders != null);
             Assert.IsTrue(orders.Count() > 0);

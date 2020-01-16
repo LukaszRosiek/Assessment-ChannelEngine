@@ -1,25 +1,16 @@
-﻿using ClientApiChannelEngine.Models;
+﻿using ChannelEngine.ClientApi.Models;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace ClientApiChannelEngine
+namespace ChannelEngine.ClientApi
 {
-    public class OrderClient : IOrderClient
+    public class OrderClient : ApiClientBase, IOrderClient
     {
-        private readonly HttpClient client;
-        private readonly string baseUri;
-        private readonly string additionalApiKey;
-
-        public OrderClient(IClientConfig clientConfig)
+        public OrderClient(IClientConfig clientConfig) : base(clientConfig)
         {
-            this.baseUri = $"{clientConfig.GetBaseApiUrl()}/api/v2";
-            this.additionalApiKey = clientConfig.GetApiKey();
-            this.client = new HttpClient();
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         public async Task<Order> GetOrderAsync(string path)
@@ -30,30 +21,22 @@ namespace ClientApiChannelEngine
             {
                 order = await response.Content.ReadAsAsync<Order>();
             }
+
             return order;
         }
 
         public async Task<IEnumerable<Order>> GetOrdersAsync(string filters = null)
         {
-            string uri;
-            Orders orders = null;
-            HttpResponseMessage response;
-            if (filters == null)
+            string uri = filters == null ? urlResolver.OrderUrl.GetOrders() : urlResolver.OrderUrl.GetOrders(baseUri, filters, apiKey);
+
+            var response = await client.GetAsync(uri);
+
+            if (!response.IsSuccessStatusCode)
             {
-                uri = API.Order.GetOrders(baseUri, additionalApiKey);
-                response = await client.GetAsync(uri);
-            }
-            else
-            {
-                uri = API.Order.GetOrders(baseUri, filters, additionalApiKey);
-                response = await client.GetAsync(uri);
+                throw new Exception("Failed to load data.");
             }
 
-            if (response.IsSuccessStatusCode)
-            {
-                orders = await response.Content.ReadAsAsync<Orders>();
-            }
-            return orders.Content;
+            return (await response.Content.ReadAsAsync<Orders>()).Content;
         }
     }
 }

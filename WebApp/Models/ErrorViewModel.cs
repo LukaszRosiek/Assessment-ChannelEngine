@@ -1,6 +1,6 @@
 using System;
 
-namespace WebApp.Models
+namespace ChannelEngine.WebApp.Models
 {
     public class ErrorViewModel
     {

@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using ClientApiChannelEngine;
-using ClientApiChannelEngine.Models;
+using ChannelEngine.ClientApi;
+using ChannelEngine.ClientApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using WebApp.Models.Product;
+using ChannelEngine.WebApp.Models.Product;
 
-namespace WebApp.Controllers
+namespace ChannelEngine.WebApp.Controllers
 {
     public class ProductController : Controller
     {

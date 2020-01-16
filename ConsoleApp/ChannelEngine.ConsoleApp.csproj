@@ -13,7 +13,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ClientApiChannelEngine\ClientApiChannelEngine.csproj" />
+    <ProjectReference Include="..\ClientApiChannelEngine\ChannelEngine.ClientApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

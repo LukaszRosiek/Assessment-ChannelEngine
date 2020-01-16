@@ -1,13 +1,12 @@
-﻿using ClientApiChannelEngine;
-using ClientApiChannelEngine.Helpers;
-using ClientApiChannelEngine.Models;
+﻿using ChannelEngine.ClientApi;
+using ChannelEngine.ClientApi.Helpers;
+using ChannelEngine.ClientApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp
+namespace ChannelEngine.ConsoleApp
 {
     public class BusinessLogicExecution : IBusinessLogicExecution
     {
@@ -20,7 +19,6 @@ namespace ConsoleApp
             this.orderClient = orderClient;
             this.clientConfig = clientConfig;
         }
-
         public async Task RunAsync()
         {
             try

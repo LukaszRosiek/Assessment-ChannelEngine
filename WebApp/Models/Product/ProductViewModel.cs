@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApp.Models.Product
+namespace ChannelEngine.WebApp.Models.Product
 {
     public class ProductViewModel
     {

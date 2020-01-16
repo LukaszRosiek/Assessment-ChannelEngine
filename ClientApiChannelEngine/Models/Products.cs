@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClientApiChannelEngine.Models
+namespace ChannelEngine.ClientApi.Models
 {
     public class Products
     {
