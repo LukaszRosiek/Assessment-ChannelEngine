@@ -10,14 +10,10 @@ namespace ChannelEngine.ClientApi
     public abstract class ApiClientBase
     {
         protected readonly HttpClient client;
-        protected readonly string baseUri;
-        protected readonly string apiKey;
         protected ApiUrlResolver urlResolver;
 
         protected ApiClientBase(IClientConfig clientConfig)
         {
-            this.baseUri = $"{clientConfig.GetBaseApiUrl()}/api/v2";
-            this.apiKey = clientConfig.GetApiKey();
             this.urlResolver = ApiUrlResolver.Get(clientConfig);
             this.client = new HttpClient();
             this.client.DefaultRequestHeaders.Accept.Clear();

@@ -14,7 +14,7 @@ namespace ChannelEngine.ClientApi.Test
 
         public string GetBaseApiUrl()
         {
-            return "https://api-dev.channelengine.net";//Test value
+            return "https://api-dev.channelengine.net/api/v2";//Test value
         }
     }
 }

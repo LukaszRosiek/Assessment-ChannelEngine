@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace ChannelEngine.ClientApi
@@ -27,7 +26,7 @@ namespace ChannelEngine.ClientApi
 
         public async Task<IEnumerable<Order>> GetOrdersAsync(string filters = null)
         {
-            string uri = filters == null ? urlResolver.OrderUrl.GetOrders() : urlResolver.OrderUrl.GetOrders(baseUri, filters, apiKey);
+            string uri = filters == null ? urlResolver.OrderUrl.GetOrders() : urlResolver.OrderUrl.GetOrders(filters);
 
             var response = await client.GetAsync(uri);
 

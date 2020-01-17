@@ -39,6 +39,45 @@ namespace ChannelEngine.ClientApi.Test
         }
 
         [TestMethod]
+        public async Task CreateProductAsyncTest()
+        {
+            PrepareForTest();
+            var newProduct = PrepareSampleProduct();
+            var creatingStatusCode = await productClient.CreateProductAsync(newProduct);
+            Assert.AreEqual(creatingStatusCode, HttpStatusCode.OK);
+
+            var product = await productClient.GetProductAsync(newProduct.MerchantProductNo);
+            Assert.IsTrue(product != null);
+        }
+
+        [TestMethod]
+        public async Task UpdateProductAsyncTest()
+        {
+            int newStock = new Random().Next(50);
+            PrepareForTest();
+            var newProduct = PrepareSampleProduct();
+
+            var product = await productClient.GetProductAsync(newProduct.MerchantProductNo);
+            product.Stock = newStock;
+            var updatingStatusCode = await productClient.UpdateProductAsync(product);
+            Assert.AreEqual(updatingStatusCode, HttpStatusCode.OK);
+
+            var productAfterUpdatingStock = await productClient.GetProductAsync(newProduct.MerchantProductNo);
+            Assert.AreEqual(productAfterUpdatingStock.Stock, newStock);
+
+        }
+
+        [TestMethod]
+        public async Task DeleteProductAsyncTest()
+        {
+            PrepareForTest();
+            var testProduct = PrepareSampleProduct();
+
+            var deleatingStatusCode = await productClient.DeleteProductAsync(testProduct.MerchantProductNo);
+            Assert.AreEqual(deleatingStatusCode, HttpStatusCode.OK);
+        }
+
+        [TestMethod]
         public async Task CreateUpdateDeleteProductAsyncTest()
         {
             int newStock = new Random().Next(50);
@@ -58,6 +97,7 @@ namespace ChannelEngine.ClientApi.Test
             var deleatingStatusCode = await productClient.DeleteProductAsync(product.MerchantProductNo);
             Assert.AreEqual(deleatingStatusCode, HttpStatusCode.OK);
         }
+
 
         private Product PrepareSampleProduct()
         {

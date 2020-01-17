@@ -15,7 +15,7 @@ namespace ChannelEngine.ClientApi
 
         private ApiUrlResolver(IClientConfig config)
         {
-            baseUri = $"{config.GetBaseApiUrl()}/api/v2";//TO DO ADD this to config file
+            baseUri = config.GetBaseApiUrl();
             apiKey = config.GetApiKey();
 
             OrderUrl = new Order();
@@ -38,8 +38,8 @@ namespace ChannelEngine.ClientApi
         public class Order
         {
             public string GetOrders() => $"{baseUri}/orders?apikey={apiKey}";
-            public string GetOrders(string baseUri, string filters, string apikey)
-                => $"{baseUri}/orders?{filters}&apikey={apikey}";
+            public string GetOrders(string filters)
+                => $"{baseUri}/orders?{filters}&apikey={apiKey}";
         }
 
         public class Product

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace ChannelEngine.ClientApi
@@ -33,7 +32,7 @@ namespace ChannelEngine.ClientApi
                 throw new Exception("Failed to load Product data.");
             }
 
-            return (await response.Content.ReadAsAsync<Product>());
+            return (await response.Content.ReadAsAsync<Product>()).Content;
         }
 
         public async Task<IEnumerable<Product>> GetProductsAsync()
